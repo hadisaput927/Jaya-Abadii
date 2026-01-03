@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaya Abadi - Toko Pancing Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Untuk ikon -->
+    <style>
+        body { background-color: #f0f8ff; font-family: Arial, sans-serif; }
+        .product-card { margin: 10px; transition: transform 0.3s; }
+        .product-card:hover { transform: scale(1.05); }
+        .cart { position: fixed; top: 10px; right: 10px; background: white; padding: 10px; border: 1px solid #ccc; width: 250px; max-height: 400px; overflow-y: auto; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; }
+        .search-bar { margin-bottom: 20px; }
+        .card-img-top { height: 200px; object-fit: cover; } /* Pastikan gambar proporsional */
+    </style>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3">
+        <h1><i class="fas fa-fish"></i> Jaya Abadi</h1>
+        <p>Gear Terbaik untuk Petualangan Memancing Anda!</p>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-anchor"></i> Jaya Abadi</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="#products">Produk</a>
+                <a class="nav-link" href="#about">Tentang</a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="search-bar">
+            <input type="text" id="search" class="form-control" placeholder="Cari produk... (misalnya: Joran)">
+        </div>
+
+        <section id="products">
+            <h2 class="text-center">Produk Kami</h2>
+            <div class="row" id="product-list">
+                <!-- Produk 1: Joran Pancing -->
+                <div class="col-md-4 col-sm-6 product-card">
+                    <div class="card">
+                        <img src="joran22.jpg" class="card-img-top" alt="Joran Pancing Basic">
+                        <div class="card-body">
+                            <h5 class="card-title">Joran Pancing Basic</h5>
+                            <p class="card-text">Joran berkualitas untuk pemula. Harga: Rp 762.000</p>
+                            <button class="btn btn-primary add-to-cart" data-name="Joran Pancing Basic" data-price="762000">Tambah ke Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produk 2: Reel Pancing -->
+                <div class="col-md-4 col-sm-6 product-card">
+                    <div class="card">
+                        <img src="reel22.jpg" class="card-img-top" alt="Reel Pancing Advanced">
+                        <div class="card-body">
+                            <h5 class="card-title">Reel Pancing Advanced</h5>
+                            <p class="card-text">Reel tahan lama untuk profesional. Harga: Rp 10.480.000</p>
+                            <button class="btn btn-primary add-to-cart" data-name="Reel Pancing Advanced" data-price="10480000">Tambah ke Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produk 3: Paket Umpan -->
+                <div class="col-md-4 col-sm-6 product-card">
+                    <div class="card">
+                        <img src="paket umpan.jpg" class="card-img-top" alt="Paket Umpan Pancing">
+                        <div class="card-body">
+                            <h5 class="card-title">Paket Umpan Pancing</h5>
+                            <p class="card-text">Umpan lengkap untuk berbagai jenis ikan. Harga: Rp 150.000</p>
+                            <button class="btn btn-primary add-to-cart" data-name="Paket Umpan Pancing" data-price="150000">Tambah ke Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produk 4: Tas Pancing -->
+                <div class="col-md-4 col-sm-6 product-card">
+                    <div class="card">
+                        <img src="tas pancing.jpg" class="card-img-top" alt="Tas Pancing Multifungsi">
+                        <div class="card-body">
+                            <h5 class="card-title">Tas Pancing Multifungsi</h5>
+                            <p class="card-text">Tas tahan air dengan banyak kompartemen. Harga: Rp 250.000</p>
+                            <button class="btn btn-primary add-to-cart" data-name="Tas Pancing Multifungsi" data-price="250000">Tambah ke Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produk 5: Pakaian Anti-Air -->
+                <div class="col-md-4 col-sm-6 product-card">
+                    <div class="card">
+                        <img src="baju.jpg" class="card-img-top" alt="Pakaian Anti-Air">
+                        <div class="card-body">
+                            <h5 class="card-title">Pakaian Anti-Air</h5>
+                            <p class="card-text">Jaket dan celana tahan air untuk cuaca ekstrem. Harga: Rp 250.000</p>
+                            <button class="btn btn-primary add-to-cart" data-name="Pakaian Anti-Air" data-price="250000">Tambah ke Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produk 6: GPS Navigasi -->
+                <div class="col-md-4 col-sm-6 product-card">
+                    <div class="card">
+                        <img src="gps.webp" class="card-img-top" alt="GPS Navigasi Pancing">
+                        <div class="card-body">
+                            <h5 class="card-title">GPS Navigasi Pancing</h5>
+                            <p class="card-text">Alat navigasi untuk menemukan spot memancing terbaik. Harga: Rp 6.800.000</p>
+                            <button class="btn btn-primary add-to-cart" data-name="GPS Navigasi Pancing" data-price="6800000">Tambah ke Keranjang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="my-5">
+            <h2>Tentang Kami</h2>
+            <p>Kami menyediakan peralatan memancing berkualitas tinggi untuk semua level. Dari pemula hingga ahli, temukan gear impian Anda di sini! Bergabunglah dengan komunitas pemancing kami.</p>
+        </section>
+    </div>
+
+    <div class="cart">
+        <h5><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h5>
+        <ul id="cart-items"></ul>
+        <p>Total: Rp <span id="total">0</span></p>
+        <button class="btn btn-success" id="checkout-btn" data-bs-toggle="modal" data-bs-target="#checkoutModal">Checkout</button>
+    </div>
+
+    <!-- Modal Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login ke Jaya Abadi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div id="login-error" class="text-danger" style="display: none;">Username atau password salah!</div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="login-btn">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Checkout -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalLabel">Checkout Pesanan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Ringkasan Keranjang:</h6>
+                    <ul id="checkout-cart-items"></ul>
+                    <p><strong>Total: Rp <span id="checkout-total">0</span></strong></p>
+                    <hr>
+                    <h6>Alamat Pengiriman</h6>
+                    <form id="checkout-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Alamat Lengkap</label>
+                            <textarea class="form-control" id="address" rows="3" required></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">Kota</label>
+                                <input type="text" class="form-control" id="city" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="postal" class="form-label">Kode Pos</label>
+                                <input type="text" class="form-control" id="postal" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Nomor Telepon</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <hr>
+                        <h6>Media Pembayaran</h6>
+                        <div class="mb-3">
+                            <select class="form-select" id="payment-method" required>
+                                <option value="">Pilih Metode Pembayaran</option>
+                                <option value="transfer-bca">Transfer Bank BCA</option>
+                                <option value="transfer-mandiri">Transfer Bank Mandiri</option>
+                                <option value="gopay">E-Wallet GoPay</option>
+                                <option value="ovo">E-Wallet OVO</option>
+                                <option value="credit-card">Kartu Kredit</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="confirm-checkout">Konfirmasi Pesanan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 Hadi Saputra Mulana Rizki - NIM:[251011700112] - Kelas[01SIFP002]</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let cart = [];
+        let total = 0;
+
+        // Tambah ke keranjang
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                cart.push({ name, price, id: Date.now() });
+                total += price;
+                updateCart();
+            });
+        });
+
+        // Update keranjang
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'cart-item';
+                li.innerHTML = `
+                    <span>${item.name} - Rp ${item.price.toLocaleString()}</span>
+                    <button class="btn btn-sm btn-danger remove-item" data-index="${index}">Hapus</button>
+                `;
+                cartItems.appendChild(li);
+            });
+            document.getElementById('total').textContent = total.toLocaleString();
+
+            // Event listener untuk hapus
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    total -= cart[index].price;
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+
+        // Pencarian produk
+        document.getElementById('search').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                const title = product.querySelector('.card-title').textContent.toLowerCase();
+                if (title.includes(query)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+
+        // Login
+        document.getElementById('login-btn').addEventListener('click', () => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('login-error');
+
+            if (username === 'hadi123' && password === 'hadi123') {
+                alert('Login berhasil! Selamat datang di Jaya Abadi.');
+                bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+                errorDiv.style.display = 'none';
+            } else {
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        // Checkout modal
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Keranjang kosong! Tambahkan produk terlebih dahulu.');
+                return;
+            }
+            const checkoutItems = document.getElementById('checkout-cart-items');
+            checkoutItems.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - Rp ${item.price.toLocaleString()}`;
+                checkoutItems.appendChild(li);
+            });
+            document.getElementById('checkout-total').textContent = total.toLocaleString();
+        });
+
+        // Konfirmasi checkout
+        document.getElementById('confirm-checkout').addEventListener('click', () => {
+            const form = document.getElementById('checkout-form');
+            if (!form.checkValidity()) {
+                alert('Harap isi semua field yang diperlukan!');
+                return;
+            }
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const postal = document.getElementById('postal').value;
+            const phone = document.getElementById('phone').value;
+            const payment = document.getElementById('payment-method').value;
+
+            alert(`Pesanan dikonfirmasi!\n\nNama: ${name}\nAlamat: ${address}, ${city} ${postal}\nTelepon: ${phone}\nPembayaran: ${payment}\nTotal: Rp ${total.toLocaleString()}\n\nTerima kasih telah berbelanja di Jaya Abadi!`);
+            // Reset keranjang setelah konfirmasi
+            cart = [];
+            total = 0;
+            updateCart();
+            bootstrap.Modal.getInstance(document.getElementById('checkoutModal')).hide();
+        });
+    </script>
+</body>
+</html>
